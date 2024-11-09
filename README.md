@@ -1,11 +1,5 @@
 # h2h
-Football fixtures head to head data from https://www.api-football.com/
+Football fixtures head to head data
 
-## Configuration
-You'll need a config file with
-
-[api]
-
-url = <API_URL>
-
-key = <API_KEY>
+## Setup
+Sign up for a plan from [API-Football](https://www.api-football.com/). Add you API URL and Key to config.ini.tmp then rename the file to remove the `.tmp` extension
