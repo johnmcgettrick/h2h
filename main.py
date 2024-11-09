@@ -1,12 +1,11 @@
 import configparser
 import requests
 import json
+
+import fixture
  
 config = configparser.ConfigParser()
 config.read("config.ini")
-
-def print_fixture(fixture):
-    print(fixture["date"] + " " + item["fixture"]["venue"]["name"])
 
 team1 = input("Please enter one of the teams: ")
 team2 = input("Please enter the other team: ")
@@ -22,5 +21,7 @@ response = requests.request("GET", url, headers=headers)
 
 data = json.loads(response.text) 
 
+print("There have been " + str(len(data["response"])) + " fixtures between these two teams since 2010")
+
 for item in data["response"]: 
-    print_fixture(item["fixture"])
+    fixture.print_fixture(item["fixture"])
