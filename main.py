@@ -21,7 +21,21 @@ response = requests.request("GET", url, headers=headers)
 
 data = json.loads(response.text) 
 
-print("There have been " + str(len(data["response"])) + " fixtures between these two teams since 2010")
+print("There have been " + str(len(data["response"])) + " matches between these two teams since 2010")
 
 for item in data["response"]: 
     fixture.print_fixture(item["fixture"])
+
+# Prompt for fixture id
+fixture_id = input("Which match would you like further details about: ")
+
+endpoint = "fixtures?id=" + format(fixture_id)
+url = config["api"]["url"] + endpoint
+response = requests.request("GET", url, headers=headers)
+
+data = json.loads(response.text)
+match = data["response"][0]
+
+print("The score that day was: " + 
+        str(match["goals"]["home"]) + "-" +
+        str(match["goals"]["away"]))
