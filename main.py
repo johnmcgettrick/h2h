@@ -37,12 +37,13 @@ url = config["api"]["url"] + endpoint
 response = requests.request("GET", url, headers=headers)
 
 data = json.loads(response.text)
-fixture = Fixture(
-    data["response"][0]["fixture"]["id"], 
-    data["response"][0]["fixture"]["date"], 
-    data["response"][0]["fixture"]["venue"]["name"])
 match = data["response"][0]
 
+fixture = Fixture(
+    match["fixture"]["id"], 
+    match["fixture"]["date"], 
+    match["fixture"]["venue"]["name"],
+    match["goals"])
+
 print("The score that day was: " + 
-        str(match["goals"]["home"]) + "-" +
-        str(match["goals"]["away"]))
+        str(fixture.goals_home) + "-" + str(fixture.goals_away))
