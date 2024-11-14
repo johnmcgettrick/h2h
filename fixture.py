@@ -4,12 +4,18 @@ class Fixture:
     id = 0
     kickoff = datetime.now()
     venue = ""
-    goals_home = 0
-    goals_away = 0
+    goals = {"home": 0, "away": 0}
+    cards = {"home": 0, "away": 0}
 
-    def __init__(self, id, timestamp, venue, goals = {}):
+    def __init__(self, id, timestamp, data):
         self.id = id
         self.kickoff = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S%z")
-        self.venue = venue
-        self.goals_home = int(goals["home"]) if goals else 0
-        self.goals_away = int(goals["away"]) if goals else 0
+        self.venue = data["fixture"]["venue"]["name"]
+        
+        self.process_events(data)
+
+    def process_events(self, data):
+        self.goals = {
+            "home": int(data["goals"]["home"]) if data["goals"]["home"] else 0, 
+            "away": int(data["goals"]["away"]) if data["goals"]["away"] else 0
+        }

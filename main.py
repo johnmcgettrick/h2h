@@ -24,7 +24,7 @@ data = json.loads(response.text)
 print("There have been " + str(len(data["response"])) + " matches between these two teams since 2010")
 
 for item in data["response"]:
-    fixture = Fixture(item["fixture"]["id"], item["fixture"]["date"], item["fixture"]["venue"]["name"])
+    fixture = Fixture(item["fixture"]["id"], item["fixture"]["date"], item)
 
     ko_time = fixture.kickoff.strftime("%a %d/%m/%Y - Kick Off: %H%M")
     print("[" + str(fixture.id) + "] - " + ko_time + " - Venue: " + fixture.venue)
@@ -42,8 +42,7 @@ match = data["response"][0]
 fixture = Fixture(
     match["fixture"]["id"], 
     match["fixture"]["date"], 
-    match["fixture"]["venue"]["name"],
-    match["goals"])
+    match)
 
 print("The score that day was: " + 
-        str(fixture.goals_home) + "-" + str(fixture.goals_away))
+        str(fixture.goals["home"]) + "-" + str(fixture.goals["away"]))
