@@ -9,8 +9,8 @@ class Fixture:
 
     def __init__(self, id, timestamp, data):
         self.id = id
-        self.kickoff = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S%z")
-        self.venue = data["fixture"]["venue"]["name"]
+        self.kickoff = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S")
+        self.venue = data["fixture"]["venue"]["name"] if data["fixture"]["venue"] else ""
         
         self.process_events(data)
 
