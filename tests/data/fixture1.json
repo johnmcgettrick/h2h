@@ -2,7 +2,8 @@
     "fixture": { 
         "venue": { 
             "name": "St James Park" 
-        }
+        },
+        "date": "2024-11-13T20:00:00+00:00"
     },
     "teams": {
         "home": {

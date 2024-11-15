@@ -13,13 +13,13 @@ class TestFixture(unittest.TestCase):
         with open(file) as f:  
             data_fixture1 = json.load(f)
 
-        self.fixture1 = Fixture(1, datetime.now().strftime("%Y-%m-%dT%H:%M:%S%z"), data_fixture1)
+        self.fixture1 = Fixture(1, data_fixture1)
 
         file = pathlib.Path("tests/data/fixture2.json")  
         with open(file) as f:  
             data_fixture2 = json.load(f)
         
-        self.fixture2 = Fixture(2, datetime.now().strftime("%Y-%m-%dT%H:%M:%S%z"), data_fixture2)
+        self.fixture2 = Fixture(2, data_fixture2)
 
     def test_process_events_score(self):
         self.assertEqual(self.fixture1.goals["home"], 3, "Home team goals for fixture 1 are set correctly")

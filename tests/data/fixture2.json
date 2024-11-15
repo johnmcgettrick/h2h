@@ -2,7 +2,8 @@
     "fixture": { 
         "venue": { 
             "name": "Old Trafford" 
-        }
+        },
+        "date": "2024-11-16T15:00:00+00:00"
     },
     "teams": {
         "home": {

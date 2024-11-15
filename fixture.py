@@ -10,9 +10,9 @@ class Fixture:
     goals = {}
     cards = {}
 
-    def __init__(self, id, timestamp, data):
+    def __init__(self, id, data):
         self.id = id
-        self.kickoff = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S")
+        self.kickoff = datetime.strptime(data["fixture"]["date"], "%Y-%m-%dT%H:%M:%S+00:00")
         self.venue = data["fixture"]["venue"]["name"] if data["fixture"]["venue"] else ""
         
         self.teams["home"] = Team(data["teams"]["home"]["id"], data["teams"]["home"]["name"])
