@@ -31,3 +31,7 @@ class Fixture:
             if ev["type"] == "card":
                 team = "home" if ev["team"]["id"] == self.teams["home"].id else "away"
                 self.cards[team] += 1
+
+    def retrieve_score(self):
+        # TODO: Add status and break goals down into stages/halves
+        return self.goals

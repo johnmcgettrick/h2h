@@ -41,5 +41,5 @@ match = data["response"][0]
 
 fixture = Fixture(match["fixture"]["id"], match)
 
-print("The score that day was: " + 
-        str(fixture.goals["home"]) + "-" + str(fixture.goals["away"]))
+score = fixture.retrieve_score()
+print("The score in this game: " + str(score["home"]) + "-" + str(score["away"]))
