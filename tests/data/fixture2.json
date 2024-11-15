@@ -1,0 +1,22 @@
+{
+    "fixture": { 
+        "venue": { 
+            "name": "Old Trafford" 
+        }
+    },
+    "teams": {
+        "home": {
+            "id": 1, 
+            "name": "Manchester United"
+        }, 
+        "away": {
+            "id": 2, 
+            "name": "Liverpool"
+        }
+    },
+    "goals": {
+        "home": 2, 
+        "away": 0
+    },
+    "events": []
+}
