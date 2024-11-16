@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from team import Team
+from event import Event
 
 class Fixture:
 
@@ -25,14 +26,15 @@ class Fixture:
             "home": int(data["goals"]["home"]) if data["goals"]["home"] else 0, 
             "away": int(data["goals"]["away"]) if data["goals"]["away"] else 0
         }
-        #  Legacy card data
+        # Legacy card data
         for ev in data["events"]:
             if ev["type"] == "card":
                 team = "home" if ev["team"]["id"] == self.teams["home"].id else "away"
                 self.cards[team] += 1
         
+        # TODO: Process events and expand class
         for ev in data["events"]:
-            self.events.append(ev)
+            self.events.append(Event(ev["id"], ev))
 
 
     def retrieve_score(self):
