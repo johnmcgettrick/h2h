@@ -22,23 +22,41 @@
     "events": [
         {
             "id": 1,
+            "time": {
+                "elapsed": 23
+            },
             "type": "card",
             "team": {
                 "id": 2
+            },
+            "player": {
+                "id": 4
             }
         },
         {
             "id": 2,
+            "time": {
+                "elapsed": 45
+            },
             "type": "card",
             "team": {
                 "id": 1
+            },
+            "player": {
+                "id": 5
             }
         },
         {
             "id": 3,
+            "time": {
+                "elapsed": 67
+            },
             "type": "card",
             "team":  {
                 "id": 2
+            },
+            "player": {
+                "id": 6
             }
         }
     ]

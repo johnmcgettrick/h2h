@@ -41,5 +41,5 @@ match = data["response"][0]
 
 fixture = Fixture(match["fixture"]["id"], match)
 
-score = fixture.retrieve_score()
+score = fixture.retrieve_event_counts("Goal")
 print("The score in this game: " + str(score["home"]) + "-" + str(score["away"]))

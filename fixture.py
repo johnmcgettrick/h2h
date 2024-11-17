@@ -19,7 +19,8 @@ class Fixture:
 
         self.events = []
 
-        self.process_events(data)
+        if "events" in data:
+            self.process_events(data)
 
     def process_events(self, data):
         self.goals = {
@@ -34,9 +35,12 @@ class Fixture:
         
         # TODO: Process events and expand class
         for ev in data["events"]:
-            self.events.append(Event(ev["id"], ev))
+            self.events.append(Event(ev))
 
-
-    def retrieve_score(self):
-        # TODO: Add status and break goals down into stages/halves
-        return self.goals
+    def retrieve_event_counts(self, type):
+        data = {"home": 0, "away": 0}
+        for ev in self.events:
+            team = "home" if ev.team == self.teams["home"].id else "away"
+            data[team] += 1 if ev.type == type else 0
+        
+        return data
