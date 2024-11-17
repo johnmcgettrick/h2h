@@ -21,11 +21,11 @@
     },
     "events": [
         {
-            "id": 1,
             "time": {
                 "elapsed": 23
             },
-            "type": "card",
+            "type": "Card",
+            "detail": "Yellow Card",
             "team": {
                 "id": 2
             },
@@ -34,11 +34,11 @@
             }
         },
         {
-            "id": 2,
             "time": {
                 "elapsed": 45
             },
-            "type": "card",
+            "type": "Card",
+            "detail": "Yellow Card",
             "team": {
                 "id": 1
             },
@@ -47,11 +47,11 @@
             }
         },
         {
-            "id": 3,
             "time": {
                 "elapsed": 67
             },
-            "type": "card",
+            "type": "Card",
+            "detail": "Yellow Card",
             "team":  {
                 "id": 2
             },

@@ -21,18 +21,20 @@ class TestFixture(unittest.TestCase):
         
         self.fixture2 = Fixture(2, data_fixture2)
 
-    def test_process_events_score(self):
-        self.assertEqual(self.fixture1.goals["home"], 3, "Home team goals for fixture 1 are set correctly")
-        self.assertEqual(self.fixture1.goals["away"], 1, "Away team goals for fixture 1 are set correctly")
-        self.assertEqual(self.fixture2.goals["home"], 2, "Home team goals for fixture 2 are set correctly")
-        self.assertEqual(self.fixture2.goals["away"], 0, "Away team goals for fixture 2 are set correctly")
+    def test_process_events(self):
+        self.assertEqual(len(self.fixture1.events), 3, "Fixture 1 event count is correct")
+        self.assertEqual(len(self.fixture2.events), 0, "Fixture 2 event count is correct")
 
-    def test_process_events_cards(self):
-        self.assertEqual(self.fixture1.cards["home"], 1, "Home team cards for fixture 1 are set correctly")
-        self.assertEqual(self.fixture1.cards["away"], 2, "Away team cards for fixture 1 are set correctly")
-        self.assertEqual(self.fixture2.cards["home"], 0, "Home team cards for fixture 2 are set correctly")
-        self.assertEqual(self.fixture2.cards["away"], 0, "Away team cards for fixture 2 are set correctly")
+        self.assertEqual(self.fixture1.events[0].type, "Yellow Card", "Fixture 1 first event is correct")
 
+    def test_retrieve_event_counts(self):
+        yellow_cards = self.fixture1.retrieve_event_counts("Yellow Card")
+        self.assertEqual(yellow_cards["home"], 1, "Home team cards for fixture 1 are set correctly")
+        self.assertEqual(yellow_cards["away"], 2, "Away team cards for fixture 1 are set correctly")
+
+        yellow_cards = self.fixture2.retrieve_event_counts("Yellow Card")
+        self.assertEqual(yellow_cards["home"], 0, "Home team cards for fixture 2 are set correctly")
+        self.assertEqual(yellow_cards["away"], 0, "Away team cards for fixture 2 are set correctly")
 
 if __name__ == '__main__':
     unittest.main()
