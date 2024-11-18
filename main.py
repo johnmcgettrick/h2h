@@ -1,3 +1,4 @@
+import ast
 import configparser
 import requests
 import json
@@ -7,8 +8,13 @@ from fixture import Fixture
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-team1 = input("Please enter one of the teams: ")
-team2 = input("Please enter the other team: ")
+# Print list of teams from config
+teams = ast.literal_eval(config["teams"]["premier"])
+for id in teams:
+    print("[" + id + "] " + teams[id])
+    
+team1 = input("Please enter one of the team ids: ")
+team2 = input("Please enter the other team id: ")
 
 endpoint = "fixtures/headtohead?h2h=" + format(team1) + "-" + format(team2)
 url = config["api"]["url"] + endpoint

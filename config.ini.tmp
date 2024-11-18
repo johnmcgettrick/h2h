@@ -1,3 +1,27 @@
 [api]
 url = <API_URL>
 key = <API_KEY>
+
+[teams]
+premier = {
+    "33": "Manchester United",
+    "34": "Newcastle",
+    "35": "Bournemouth",
+    "36": "Fulham",
+    "39": "Wolves",
+    "40": "Liverpool",
+    "41": "Southampton",
+    "42": "Arsenal",
+    "45": "Everton",
+    "46": "Leicester",
+    "47": "Tottenham",
+    "48": "West Ham",
+    "49": "Chelsea",
+    "50": "Manchester City",
+    "51": "Brighton",
+    "52": "Crystal Palace",
+    "55": "Brentford",
+    "57": "Ipswich",
+    "65": "Nottingham Forest",
+    "66": "Aston Villa" 
+    }
