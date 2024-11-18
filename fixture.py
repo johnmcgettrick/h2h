@@ -15,10 +15,7 @@ class Fixture:
             "away": Team(data["teams"]["away"]["id"], data["teams"]["away"]["name"])
         }
 
-        self.cards = {"home": 0, "away": 0}
-
         self.events = []
-
         if "events" in data:
             self.process_events(data)
 
@@ -27,13 +24,7 @@ class Fixture:
             "home": int(data["goals"]["home"]) if data["goals"]["home"] else 0, 
             "away": int(data["goals"]["away"]) if data["goals"]["away"] else 0
         }
-        # Legacy card data
-        for ev in data["events"]:
-            if ev["type"] == "card":
-                team = "home" if ev["team"]["id"] == self.teams["home"].id else "away"
-                self.cards[team] += 1
         
-        # TODO: Process events and expand class
         for ev in data["events"]:
             self.events.append(Event(ev))
 

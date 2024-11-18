@@ -43,3 +43,8 @@ fixture = Fixture(match["fixture"]["id"], match)
 
 score = fixture.retrieve_event_counts("Goal")
 print("The score in this game: " + str(score["home"]) + "-" + str(score["away"]))
+
+ycards = fixture.retrieve_event_counts("Yellow Card")
+rcards = fixture.retrieve_event_counts("Red Card")
+totalcards = ycards["home"] + ycards["away"] + rcards["home"] + rcards["away"]
+print("The total number of cards in this game: " + str(totalcards))
