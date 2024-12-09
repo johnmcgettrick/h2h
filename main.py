@@ -3,6 +3,8 @@ import configparser
 import requests
 import json
 
+from datetime import datetime
+
 from fixture import Fixture
  
 config = configparser.ConfigParser()
@@ -27,13 +29,19 @@ response = requests.request("GET", url, headers=headers)
 
 data = json.loads(response.text) 
 
-print("There have been " + str(len(data["response"])) + " matches between these two teams since 2010")
 
+first_game = datetime.now().year
+i = 0
 for item in data["response"]:
     fixture = Fixture(item["fixture"]["id"], item)
 
     ko_time = fixture.kickoff.strftime("%a %d/%m/%Y - Kick Off: %H%M")
+    i += 1
+    if fixture.kickoff.year < first_game:
+        first_game = fixture.kickoff.year 
     print("[" + str(fixture.id) + "] - " + ko_time + " - Venue: " + fixture.venue)
+
+print("There have been " + str(i) + " matches between these two teams since " + str(first_game))
 
 # Prompt for fixture id
 fixture_id = input("Which match would you like further details about: ")
